@@ -1,6 +1,7 @@
 package ms2709.kafka.usecase.post_usecase
 
 import ms2709.kafka.domain.post.model.Post
+import ms2709.kafka.usecase.core.port.post.OriginalPostMessageProducePort
 import ms2709.kafka.usecase.core.port.post.PostPort
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -8,7 +9,8 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 open class PostCreateService (
-    private val postPort: PostPort
+    private val postPort: PostPort,
+    private val messagePort: OriginalPostMessageProducePort
 ): PostCreateUseCase {
 
     @Transactional
@@ -20,6 +22,9 @@ open class PostCreateService (
             request.categoryId
         ).run {
             postPort.save(this)
+        }.run {
+            messagePort.sendCreateMessage(this)
+            this
         }
     }
 

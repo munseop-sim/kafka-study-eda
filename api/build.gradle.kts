@@ -21,6 +21,7 @@ dependencies {
 
     implementation(project(":adapter:mysql"))
     implementation(project(":adapter:metadata-client"))
+    implementation(project(":adapter:kafka"))
 
     testImplementation(kotlin("test"))
 }

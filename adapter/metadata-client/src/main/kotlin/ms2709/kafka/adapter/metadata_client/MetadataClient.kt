@@ -11,7 +11,7 @@ class MetadataClient (
 
     fun getCategoryById(
         categoryId: Long
-    ): CategoryResponse {
+    ): CategoryResponse? {
         return metadataWebClient
             .get()
             .uri("/categories/$categoryId")
@@ -23,7 +23,7 @@ class MetadataClient (
 
     fun getUserById(
         userId: Long
-    ): UserResponse {
+    ): UserResponse? {
         return metadataWebClient
             .get()
             .uri("/users/$userId")

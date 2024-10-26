@@ -13,6 +13,8 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.0")
     implementation(project(":usecase:core"))
+
+
     testImplementation(kotlin("test"))
 
 //    implementation("com.querydsl:querydsl-jpa:5.0.0")

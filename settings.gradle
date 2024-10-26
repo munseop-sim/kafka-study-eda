@@ -26,7 +26,7 @@ include 'adapter'
 include 'adapter:mysql'
 include 'adapter:redis'
 include 'adapter:metadata-client'
-
+include 'adapter:kafka'
 include 'api'
 //include 'adapter:kafka'
 //include 'adapter:mysql'
