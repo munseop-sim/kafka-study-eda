@@ -1,4 +1,4 @@
-package ms2709.kafka.usecase.core
+package ms2709.kafka.usecase.core.port.metadata
 
 interface MetadataPort {
     fun getCategoryNameByCategoryId(categoryId: Long): String?

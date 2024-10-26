@@ -87,6 +87,30 @@ class Post {
                 updatedAt = now
             )
         }
+
+
+        fun generate(
+            id: Long?,
+            title: String,
+            content: String,
+            userId: Long?,
+            categoryId: Long?,
+            createdAt: LocalDateTime?,
+            updatedAt: LocalDateTime?,
+            deletedAt: LocalDateTime?
+        ):Post{
+            return Post(
+                id = id,
+                title = title,
+                content = content,
+                userId = userId,
+                categoryId = categoryId,
+                createdAt = createdAt,
+                updatedAt = updatedAt,
+                deletedAt = deletedAt
+            )
+        }
+
     }
 
 

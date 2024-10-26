@@ -1,4 +1,5 @@
 plugins {
+    kotlin("kapt") version "2.0.20"
     kotlin("jvm") version "2.0.20"
 }
 
@@ -10,6 +11,7 @@ allprojects {
 
 subprojects{
     apply(plugin = "org.jetbrains.kotlin.jvm") // 서브 프로젝트에 공통으로 코틀린 플러그인 적용
+    apply(plugin = "org.jetbrains.kotlin.kapt")
 
     dependencies{
 //        testImplementation(kotlin("test"))
@@ -22,5 +24,9 @@ subprojects{
     }
     kotlin {
         jvmToolchain(21)
+    }
+
+    kapt {
+        correctErrorTypes = true
     }
 }

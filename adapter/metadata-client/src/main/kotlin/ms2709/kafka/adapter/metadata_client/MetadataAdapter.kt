@@ -1,6 +1,6 @@
 package ms2709.kafka.adapter.metadata_client
 
-import ms2709.kafka.usecase.core.MetadataPort
+import ms2709.kafka.usecase.core.port.metadata.MetadataPort
 import org.springframework.stereotype.Component
 
 @Component

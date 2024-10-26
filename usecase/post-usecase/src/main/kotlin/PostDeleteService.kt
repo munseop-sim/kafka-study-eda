@@ -1,11 +1,19 @@
 package ms2709.kafka.usecase.post_usecase
 
 import ms2709.kafka.domain.post.model.Post
+import ms2709.kafka.usecase.core.port.post.PostPort
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
+@Transactional
 @Service
-class PostDeleteService : PostDeleteUseCase {
+open class PostDeleteService (
+    private val postPort: PostPort
+): PostDeleteUseCase {
     override fun delete(request: PostDeleteUseCase.Request): Post? {
-        return null
+        return postPort.findById(request.postId)?.let {
+            it.delete()
+            postPort.save(it)
+        }
     }
 }

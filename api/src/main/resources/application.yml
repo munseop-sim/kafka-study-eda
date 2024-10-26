@@ -8,7 +8,7 @@ external-server:
 
 spring:
     datasource:
-        url: jdbc:mysql://localhost:3306/campus?serverTimezone=Asia/Seoul
+        jdbc-url: jdbc:mysql://localhost:3306/campus?serverTimezone=Asia/Seoul
         username: myuser
         password: mypassword
         driver-class-name: com.mysql.cj.jdbc.Driver
