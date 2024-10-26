@@ -22,6 +22,7 @@ dependencies {
     implementation(project(":adapter:mysql"))
     implementation(project(":adapter:metadata-client"))
     implementation(project(":adapter:kafka"))
+    implementation(project(":adapter:chat-gpt-client"))
 
     testImplementation(kotlin("test"))
 }

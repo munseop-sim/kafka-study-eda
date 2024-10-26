@@ -27,6 +27,7 @@ include 'adapter:mysql'
 include 'adapter:redis'
 include 'adapter:metadata-client'
 include 'adapter:kafka'
+include 'adapter:chat-gpt-client'
 include 'api'
 //include 'adapter:kafka'
 //include 'adapter:mysql'
@@ -41,5 +42,5 @@ include 'api'
 //include 'usecase:core'
 //findProject(':usecase:core')?.name = 'core'
 
-
+findProject(':adapter:chat-gpt-client')?.name = 'chat-gpt-client'
 
