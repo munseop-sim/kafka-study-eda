@@ -72,7 +72,7 @@ class Post {
 
     companion object {
         fun generate(
-            userId: Long,
+            userId: Long?,
             title: String,
             content: String,
             categoryId: Long

@@ -18,6 +18,7 @@ dependencies {
     implementation(project(":domain"))
 
     implementation(project(":usecase:post-usecase"))
+    implementation(project(":usecase:inspected-post-usecase"))
 
     implementation(project(":adapter:mysql"))
     implementation(project(":adapter:metadata-client"))

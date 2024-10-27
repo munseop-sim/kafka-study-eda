@@ -16,7 +16,7 @@ include 'usecase'
 include 'usecase:core'
 include 'usecase:post-resolving-help-usecase'
 include 'usecase:post-usecase'
-
+include 'usecase:inspected-post-usecase'
 //include 'usecase:post-resolving-help-usecase'
 //include 'usecase:inspected-post-usecase'
 //include 'usecase:subscribing-post-usecase'
@@ -41,6 +41,4 @@ include 'api'
 //findProject(':usecase:core')?.name = 'core'
 //include 'usecase:core'
 //findProject(':usecase:core')?.name = 'core'
-
-findProject(':adapter:chat-gpt-client')?.name = 'chat-gpt-client'
 
