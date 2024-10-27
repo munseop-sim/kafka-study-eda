@@ -15,7 +15,7 @@ subprojects{
 
     dependencies{
         api(kotlin("stdlib")) // 코틀린 표준 라이브러리 사용
-        implementation("org.springframework.boot:spring-boot-starter:3.2.0")
+//        implementation("org.springframework.boot:spring-boot-starter:3.2.0")
         testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.0")
         implementation(project(":common"))
         implementation(project(":domain"))

@@ -12,6 +12,7 @@ include 'usecase:core'
 include 'usecase:post-resolving-help-usecase'
 include 'usecase:post-usecase'
 include 'usecase:inspected-post-usecase'
+include 'usecase:subscribe-post-usecase'
 
 include 'adapter'
 include 'adapter:mysql'
@@ -19,11 +20,13 @@ include 'adapter:redis'
 include 'adapter:metadata-client'
 include 'adapter:kafka'
 include 'adapter:chat-gpt-client'
+include 'adapter:mongodb'
 
 //include 'worker'
 //include 'worker:auto-inspection-worker'
 //
 include 'worker'
 include 'worker:auto-inspection-worker'
-
+include 'worker:content-subscribe-worker'
+findProject(':worker:content-subscribe-worker')?.name = 'content-subscribe-worker'
 

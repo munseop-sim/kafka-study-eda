@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 
 //todo - querydsl 추가
 @Component
-class PostEntityAdapter(
+open class PostEntityAdapter(
     private val postJpaRepository: PostJpaRepository
 ) : PostPort {
     override fun save(post: Post): Post {

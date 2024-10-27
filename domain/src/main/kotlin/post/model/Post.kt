@@ -3,6 +3,8 @@ package ms2709.kafka.domain.post.model
 import java.time.LocalDateTime
 
 class Post {
+    constructor()
+
     private constructor(
         id: Long?,
         title: String?,

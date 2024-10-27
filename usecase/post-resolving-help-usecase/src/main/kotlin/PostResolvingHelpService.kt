@@ -30,6 +30,6 @@ class PostResolvingHelpService (
     }
 
     override fun resolvePostsByIds(postIds: List<Long>): List<ResolvedPost> {
-        return listOf()
+        return postPort.listByIds(postIds).map { resolvePost(it) }
     }
 }

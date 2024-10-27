@@ -4,7 +4,7 @@ plugins {
 
 
 dependencies {
-    implementation("org.springframework.kafka:spring-kafka:3.2.0")
+    api("org.springframework.kafka:spring-kafka:3.2.0")
     testImplementation(kotlin("test"))
 }
 

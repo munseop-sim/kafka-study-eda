@@ -8,32 +8,35 @@ import org.springframework.boot.jdbc.DataSourceBuilder
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Primary
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean
 import org.springframework.transaction.annotation.EnableTransactionManagement
 import javax.sql.DataSource
 
-@EnableJpaAuditing
-@EnableTransactionManagement
+
+
 @EnableJpaRepositories(
-    basePackages = ["ms2709.kafka.adapter.mysql"]
+    basePackages = ["ms2709.kafka"]
 )
 @Configuration
-class JpaConfig(
+open class JpaConfig(
     private val jpaProperties: JpaProperties,
     private val hibernateProperties: HibernateProperties
 ) {
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
-    fun dataSource(): DataSource {
+    @Primary
+    @ConfigurationProperties("spring.datasource")
+    open fun dataSource(): DataSource {
         return DataSourceBuilder.create().build()
     }
 
 
     @Bean
-    fun entityManagerFactory(builder: EntityManagerFactoryBuilder): LocalContainerEntityManagerFactoryBean {
+    @Primary
+    open fun entityManagerFactory(builder: EntityManagerFactoryBuilder): LocalContainerEntityManagerFactoryBean {
         val properties = hibernateProperties.determineHibernateProperties(jpaProperties.properties, HibernateSettings())
         return builder.dataSource(dataSource())
             .packages("ms2709.kafka.adapter.mysql")

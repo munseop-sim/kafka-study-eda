@@ -1,4 +1,4 @@
-package ms2709.kafka.worker.auto_inspection_worker.consumer
+package ms2709.kafka.worker.auto_inspection_worker
 
 import ms2709.kafka.adapter.kafka.common.OperationTypes
 import ms2709.kafka.adapter.kafka.common.Topic
