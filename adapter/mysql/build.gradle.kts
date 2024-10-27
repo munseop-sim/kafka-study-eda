@@ -1,6 +1,6 @@
 plugins {
-    id("org.springframework.boot") version "3.2.0"
-    id("io.spring.dependency-management") version "1.0.11.RELEASE"
+//    id("org.springframework.boot") version "3.2.0"
+//    id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("plugin.spring") version "2.0.20"
 //    kotlin("kapt")
 //    kotlin("jvm")

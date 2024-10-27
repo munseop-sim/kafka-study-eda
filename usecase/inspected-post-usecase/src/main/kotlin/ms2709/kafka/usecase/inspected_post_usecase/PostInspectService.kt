@@ -8,7 +8,7 @@ import ms2709.kafka.usecase.core.port.metadata.MetadataPort
 import org.springframework.stereotype.Service
 
 @Service
-class PostInspectService(
+open class PostInspectService(
     private val metadataPort: MetadataPort,
     private val postAutoInspectPort: PostAutoInspectPort
 ) : PostInspectUseCase{
