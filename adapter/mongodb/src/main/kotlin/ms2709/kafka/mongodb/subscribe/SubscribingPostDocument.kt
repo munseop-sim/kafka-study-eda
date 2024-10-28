@@ -5,7 +5,6 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import post.model.Post
 import java.time.LocalDateTime
-import kotlin.properties.Delegates
 
 @Document(collection = "subscribingInboxPosts")
 class SubscribingPostDocument {

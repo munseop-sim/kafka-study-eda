@@ -1,6 +1,5 @@
 package ms2709.kafka.worker
 
-import com.fasterxml.jackson.core.JsonProcessingException
 import ms2709.kafka.adapter.kafka.common.OperationTypes
 import ms2709.kafka.adapter.kafka.common.Topic
 import ms2709.kafka.adapter.kafka.inspected_post.InspectedPostMessage
@@ -46,9 +45,6 @@ class ContentSubscribeWorker (
             }
             else-> throw IllegalArgumentException("Unknown operation type")
         }
-
-
-
     }
 
     private fun handleCreate(inspectedPostMessage: InspectedPostMessage) {

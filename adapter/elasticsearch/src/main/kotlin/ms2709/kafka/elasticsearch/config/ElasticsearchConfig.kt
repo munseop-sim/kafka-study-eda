@@ -3,7 +3,6 @@ package ms2709.kafka.elasticsearch.config
 import org.apache.http.HttpHeaders
 import org.apache.http.HttpHost
 import org.apache.http.HttpResponse
-import org.apache.http.HttpResponseInterceptor
 import org.apache.http.client.CredentialsProvider
 import org.apache.http.impl.client.BasicCredentialsProvider
 import org.apache.http.impl.nio.client.HttpAsyncClientBuilder
@@ -37,13 +36,12 @@ open class ElasticsearchConfig {
                         )
                     )
                 )
-                httpClientBuilder.addInterceptorLast(HttpResponseInterceptor { response: HttpResponse, context: HttpContext? ->
+                httpClientBuilder.addInterceptorLast { response: HttpResponse, _: HttpContext ->
                     response.addHeader(
                         "X-Elastic-Product",
                         "Elasticsearch"
                     )
                 }
-                )
                 httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider)
             }.build()
     }

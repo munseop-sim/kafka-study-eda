@@ -10,7 +10,7 @@ class SubscribePostListService (
     private val subscribingPostPort: SubscribingPostPort,
     private val postResolvingHelpUseCase: PostResolvingHelpUseCase
 ): SubscribePostListUseCase{
-    private  val PAGE_SIZE = 5;
+    private  val PAGE_SIZE = 5
 
     override fun listSubscribingInboxPosts(request: SubscribePostListUseCase.Request): List<ResolvedPost> {
         assert(request.followerUserId != null)

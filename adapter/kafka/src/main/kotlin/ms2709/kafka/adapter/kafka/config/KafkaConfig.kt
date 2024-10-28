@@ -16,7 +16,6 @@ import org.springframework.kafka.annotation.EnableKafka
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory
 import org.springframework.kafka.core.*
 import org.springframework.kafka.listener.*
-import org.springframework.util.backoff.BackOff
 import org.springframework.util.backoff.ExponentialBackOff
 import java.util.concurrent.atomic.AtomicReference
 
@@ -73,23 +72,28 @@ open class KafkaConfig {
         val factory = ConcurrentKafkaListenerContainerFactory<String, Any>()
         factory.consumerFactory = consumerFactory()
         factory.setCommonErrorHandler(errorHandler())
-        factory.containerProperties.ackMode = ContainerProperties.AckMode.MANUAL
+        factory.containerProperties.ackMode = ContainerProperties.AckMode.MANUAL //ack mode 수동처리
         return factory
     }
 
     @Bean
     @Primary
     open fun errorHandler():CommonErrorHandler{
-        val cseh = CommonContainerStoppingErrorHandler()
+        val cseh = CommonContainerStoppingErrorHandler() //에러발생시 컨테이너 down
         val consumer2: AtomicReference<Consumer<*, *>> = AtomicReference()
         val container2: AtomicReference<MessageListenerContainer> = AtomicReference()
 
-//        val errorHandler = DefaultErrorHandler()
         val errorHandler: DefaultErrorHandler = object : DefaultErrorHandler(
             ConsumerRecordRecoverer { rec: ConsumerRecord<*, *>, ex: Exception ->
                 cseh.handleRemaining(ex, listOf(rec), consumer2.get(), container2.get())
-            }, generateBackOff()
+            }, run{
+                //백오프 지정
+                ExponentialBackOff(1000, 2.0).apply {
+                    this.maxAttempts = 3
+                }
+            }
         ) {
+            //에러처리 오버라이드
             override fun handleRemaining(
                 thrownException: Exception,
                 records: List<ConsumerRecord<*, *>>,
@@ -101,14 +105,9 @@ open class KafkaConfig {
                 super.handleRemaining(thrownException, records, consumer, container)
             }
         }
+        //json 처리 관련 에러는 retry하지 않도록 지정
         errorHandler.addNotRetryableExceptions(JsonProcessingException::class.java)
         return errorHandler
     }
 
-
-    private fun generateBackOff(): BackOff {
-        val backOff = ExponentialBackOff(1000, 2.0)
-        backOff.maxAttempts = 3
-        return backOff
-    }
 }
