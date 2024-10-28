@@ -3,10 +3,11 @@ package ms2709.kafka.adapter.kafka.original_post
 import ms2709.kafka.adapter.kafka.common.OperationTypes
 import ms2709.kafka.adapter.kafka.common.Topic
 import ms2709.kafka.common.CustomObjectMapper
-import ms2709.kafka.domain.post.model.Post
+
 import ms2709.kafka.usecase.core.port.post.OriginalPostMessageProducePort
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Component
+import post.model.Post
 
 @Component
 class OriginalPostMessageProduceAdapter(

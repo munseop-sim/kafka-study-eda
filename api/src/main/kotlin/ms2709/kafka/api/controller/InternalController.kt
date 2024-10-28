@@ -3,7 +3,7 @@ package ms2709.kafka.api.controller
 import inspectedpost.model.InspectedPost
 import io.swagger.v3.oas.annotations.Operation
 import ms2709.kafka.adapter.chatgpt.ChatGptClient
-import ms2709.kafka.domain.post.model.Post
+
 import ms2709.kafka.usecase.inspected_post_usecase.PostInspectUseCase
 import org.springframework.http.ResponseEntity
 
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import post.model.Post
 
 @RestController
 @RequestMapping("/internal")
@@ -35,7 +36,7 @@ class InternalController (
         @RequestParam("categoryId") categoryId: Long,
     ): ResponseEntity<InspectedPost>{
         return postInspectUseCase.inspectAndGetIfValid(
-            Post.Companion.generate(
+            Post.generate(
                 userId = null,
                 title = title,
                 content = content,

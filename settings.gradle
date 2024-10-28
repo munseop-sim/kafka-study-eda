@@ -28,5 +28,5 @@ include 'adapter:mongodb'
 include 'worker'
 include 'worker:auto-inspection-worker'
 include 'worker:content-subscribe-worker'
-findProject(':worker:content-subscribe-worker')?.name = 'content-subscribe-worker'
+include 'worker:content-caching-worker'
 

@@ -1,4 +1,4 @@
-package ms2709.kafka.domain.post.model
+package post.model
 
 import java.time.LocalDateTime
 

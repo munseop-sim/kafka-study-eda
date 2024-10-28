@@ -1,7 +1,8 @@
 package ms2709.kafka.adapter.kafka.original_post
 
 import ms2709.kafka.adapter.kafka.common.OperationTypes
-import ms2709.kafka.domain.post.model.Post
+import post.model.Post
+
 
 fun OriginalPostMessage.toModel(): Post {
     return Post.generate(
@@ -20,16 +21,18 @@ fun Post.toMessage(id:Long, operationType:OperationTypes): OriginalPostMessage {
     val post = this
     return OriginalPostMessage().apply {
         this.id = id
-        this.payLoad = OriginalPostMessage.Payload(
-            id= post.id,
-            title = post.title,
-            content = post.content,
-            userId = post.userId,
-            categoryId = post.categoryId,
-            createdAt = post.createdAt,
-            updatedAt = post.updatedAt,
-            deletedAt = post.deletedAt
-        )
+        this.payLoad = OriginalPostMessage.Payload().apply {
+            this.id= post.id
+            this.title = post.title
+            this.content = post.content
+            this.userId = post.userId
+            this.categoryId = post.categoryId
+            this.createdAt = post.createdAt
+            this.updatedAt = post.updatedAt
+            this.deletedAt = post.deletedAt
+        }
+
+
         this.operationType = operationType
     }
 }

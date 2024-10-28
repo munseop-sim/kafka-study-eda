@@ -4,14 +4,15 @@ import ms2709.kafka.api.model.PostCreateRequest
 import ms2709.kafka.api.model.PostDetailDto
 import ms2709.kafka.api.model.PostDto
 import ms2709.kafka.api.model.PostUpdateRequest
-import ms2709.kafka.domain.post.model.Post
-import ms2709.kafka.domain.post.model.ResolvedPost
+
 import ms2709.kafka.usecase.post_usecase.PostCreateUseCase
 import ms2709.kafka.usecase.post_usecase.PostDeleteUseCase
 import ms2709.kafka.usecase.post_usecase.PostReadUseCase
 import ms2709.kafka.usecase.post_usecase.PostUpdateUseCase
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import post.model.Post
+import post.model.ResolvedPost
 
 
 @RestController

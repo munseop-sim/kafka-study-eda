@@ -1,8 +1,8 @@
 package ms2709.kafka.mongodb.subscribe
 
-import ms2709.kafka.domain.post.model.Post
 import ms2709.kafka.usecase.core.port.subscribe.SubscribingPostPort
 import org.springframework.stereotype.Component
+import post.model.Post
 
 @Component
 class SubscribingPostAdapter (

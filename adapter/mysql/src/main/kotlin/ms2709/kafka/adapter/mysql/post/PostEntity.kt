@@ -1,13 +1,16 @@
 package ms2709.kafka.adapter.mysql.post
 
 import jakarta.persistence.*
+import org.hibernate.annotations.DynamicUpdate
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
 import java.time.LocalDateTime
 
 @Table(name="post")
-@EnableJpaAuditing
+@EntityListeners(AuditingEntityListener::class)
+@DynamicUpdate
 @Entity
 class PostEntity {
     @Id

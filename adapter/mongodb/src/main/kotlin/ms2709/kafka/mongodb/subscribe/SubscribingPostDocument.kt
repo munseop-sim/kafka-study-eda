@@ -1,8 +1,9 @@
 package ms2709.kafka.mongodb.subscribe
 
-import ms2709.kafka.domain.post.model.Post
+
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
+import post.model.Post
 import java.time.LocalDateTime
 import kotlin.properties.Delegates
 
@@ -36,17 +37,4 @@ class SubscribingPostDocument {
             }
         }
     }
-
-
 }
-
-
-
-//@Id
-//private String id; // postId와 followerUserId의 조합
-//
-//private Long postId;
-//private Long followerUserId; // follower(구독자) user id
-//private LocalDateTime postCreatedAt; // 컨텐츠의 생성시점
-//private LocalDateTime addedAt; // follower 유저의 구독 목록에 반영된 시점
-//private boolean read; // 해당 구독 컨텐츠 조회 여부

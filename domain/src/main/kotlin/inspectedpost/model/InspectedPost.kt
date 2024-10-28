@@ -1,6 +1,7 @@
 package inspectedpost.model
 
-import ms2709.kafka.domain.post.model.Post
+
+import post.model.Post
 import java.time.LocalDateTime
 
 data class InspectedPost (

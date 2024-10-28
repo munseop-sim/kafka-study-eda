@@ -1,6 +1,7 @@
 package ms2709.kafka.adapter.mysql.post
 
-import ms2709.kafka.domain.post.model.Post
+import post.model.Post
+
 
 fun Post.toEntity():PostEntity{
     return PostEntity.generate(

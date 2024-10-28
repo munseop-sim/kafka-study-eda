@@ -8,14 +8,14 @@ class OriginalPostMessage {
     var payLoad:Payload? = null
     var operationType:OperationTypes? = null
 
-    data class Payload(
-        var id:Long? = null,
-        var title:String? = null,
-        var content:String? = null,
-        val userId:Long? = null,
-        var categoryId:Long? = null,
-        var createdAt:LocalDateTime? = null,
-        var updatedAt:LocalDateTime? = null,
+    class Payload{
+        var id:Long? = null
+        var title:String? = null
+        var content:String? = null
+        var userId:Long? = null
+        var categoryId:Long? = null
+        var createdAt:LocalDateTime? = null
+        var updatedAt:LocalDateTime? = null
         var deletedAt:LocalDateTime? = null
-    )
+    }
 }

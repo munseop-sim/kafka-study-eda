@@ -1,11 +1,10 @@
 package ms2709.kafka.api.controller
 
 import ms2709.kafka.api.model.PostInListDto
-import ms2709.kafka.domain.post.model.ResolvedPost
+
 import ms2709.kafka.subscribe_post_usecase.SubscribePostListUseCase
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.time.LocalDateTime
 
 @RestController
 @RequestMapping("/list")
