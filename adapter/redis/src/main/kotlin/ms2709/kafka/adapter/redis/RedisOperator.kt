@@ -66,7 +66,7 @@ class RedisOperator(
      */
     fun get(key:String):String? = valueOp.get(key)?.toString()
 
-    fun getAll(keyList:List<String>):List<String> = valueOp.multiGet(keyList)
+    fun getAll(keyList:List<String>):List<String> = valueOp.multiGet(keyList)?.let { it.toList() } ?: emptyList()
 
     /**
      * String value get And Delete

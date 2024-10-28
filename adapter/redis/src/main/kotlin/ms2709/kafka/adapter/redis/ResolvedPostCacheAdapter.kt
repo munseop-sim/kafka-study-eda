@@ -42,8 +42,10 @@ class ResolvedPostCacheAdapter(
         val resolvedPostList = postIds.map {
             generateCacheKey(it)
         }.run {
-            redisOperator.getAll(this)
+            val results =  redisOperator.getAll(this)
+            results
         }.mapNotNull {
+            it ?: return@mapNotNull null
             objectMapper.readValue(it, ResolvedPost::class.java)
         }
         log.info("redis multi get -> {}", resolvedPostList)

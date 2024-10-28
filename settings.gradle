@@ -13,6 +13,7 @@ include 'usecase:post-resolving-help-usecase'
 include 'usecase:post-usecase'
 include 'usecase:inspected-post-usecase'
 include 'usecase:subscribe-post-usecase'
+include 'usecase:post-search-usecase'
 
 include 'adapter'
 include 'adapter:mysql'
@@ -21,6 +22,7 @@ include 'adapter:metadata-client'
 include 'adapter:kafka'
 include 'adapter:chat-gpt-client'
 include 'adapter:mongodb'
+include 'adapter:elasticsearch'
 
 //include 'worker'
 //include 'worker:auto-inspection-worker'
@@ -29,4 +31,6 @@ include 'worker'
 include 'worker:auto-inspection-worker'
 include 'worker:content-subscribe-worker'
 include 'worker:content-caching-worker'
+include 'worker:content-indexing-worker'
+
 

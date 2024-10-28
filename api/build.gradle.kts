@@ -20,12 +20,14 @@ dependencies {
     implementation(project(":usecase:post-usecase"))
     implementation(project(":usecase:inspected-post-usecase"))
     implementation(project(":usecase:subscribe-post-usecase"))
+    implementation(project(":usecase:post-search-usecase"))
 
     implementation(project(":adapter:mysql"))
     implementation(project(":adapter:metadata-client"))
     implementation(project(":adapter:kafka"))
     implementation(project(":adapter:chat-gpt-client"))
     implementation(project(":adapter:mongodb"))
+    implementation(project(":adapter:elasticsearch"))
 
     testImplementation(kotlin("test"))
 }
