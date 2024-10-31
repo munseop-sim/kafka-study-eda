@@ -3,7 +3,7 @@ package ms2709.kafka.post_search_usecase
 import ms2709.kafka.usecase.core.port.post.PostSearchPort
 import ms2709.kafka.usecase.post_resolving_help_usecase.PostResolvingHelpUseCase
 import org.springframework.stereotype.Service
-import post.model.ResolvedPost
+import ms2709.kafka.post.model.ResolvedPost
 
 @Service
 class PostSearchService (

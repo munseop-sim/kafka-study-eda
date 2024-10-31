@@ -1,12 +1,12 @@
 package ms2709.kafka.usecase.inspected_post_usecase
 
-import inspectedpost.model.AutoInspectionResultTypes
-import inspectedpost.model.InspectedPost
+import ms2709.kafka.inspectedpost.model.AutoInspectionResultTypes
+import ms2709.kafka.inspectedpost.model.InspectedPost
 
 import ms2709.kafka.usecase.core.port.chatgpt.PostAutoInspectPort
 import ms2709.kafka.usecase.core.port.metadata.MetadataPort
 import org.springframework.stereotype.Service
-import post.model.Post
+import ms2709.kafka.post.model.Post
 
 @Service
 open class PostInspectService(

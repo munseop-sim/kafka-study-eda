@@ -1,6 +1,6 @@
 package ms2709.kafka.api.controller
 
-import inspectedpost.model.InspectedPost
+import ms2709.kafka.inspectedpost.model.InspectedPost
 import io.swagger.v3.oas.annotations.Operation
 import ms2709.kafka.adapter.chatgpt.ChatGptClient
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
-import post.model.Post
+import ms2709.kafka.post.model.Post
 
 @RestController
 @RequestMapping("/internal")

@@ -1,15 +1,16 @@
-package ms2709.kafka.adapter.redis.ms2709.kafka.adapter.redis
+package ms2709.kafka.adapter.redis.ms2709.kafka.adapter.redis.post
 
+import ms2709.kafka.adapter.redis.ms2709.kafka.adapter.redis.RedisOperator
 import ms2709.kafka.common.CustomObjectMapper
 import ms2709.kafka.common.LogDelegate
 import ms2709.kafka.usecase.core.port.post.ResolvedPostCachePort
 import org.springframework.stereotype.Component
-import post.model.ResolvedPost
+import ms2709.kafka.post.model.ResolvedPost
 import java.time.Duration
 
 @Component
 class ResolvedPostCacheAdapter(
-    private val redisOperator:RedisOperator
+    private val redisOperator: RedisOperator
 ): ResolvedPostCachePort {
     private val log by LogDelegate()
 

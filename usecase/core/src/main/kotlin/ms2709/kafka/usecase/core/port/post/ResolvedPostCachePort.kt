@@ -1,6 +1,6 @@
 package ms2709.kafka.usecase.core.port.post
 
-import post.model.ResolvedPost
+import ms2709.kafka.post.model.ResolvedPost
 
 interface ResolvedPostCachePort {
     fun set(resolvedPost: ResolvedPost)

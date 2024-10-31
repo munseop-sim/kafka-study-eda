@@ -22,6 +22,11 @@ class RedisOperator(
 ) {
 
     /**
+     * 기본 EXPIRE_SECOND
+     */
+    private val DEFAULT_EXPIRATION_PERIOD = Duration.ofSeconds(60L * 60L * 24L)
+
+    /**
      * string 자료형을 다루기 위한 연산 객체
      */
     private val valueOp = redisTemplate.opsForValue()
@@ -79,6 +84,17 @@ class RedisOperator(
     }
 
     /**
+     * 해당 키가 이미 존재한다면 false 반환, 존재하지 않는다면 key:value 설정후에 true 반환
+     */
+    fun setIfAbsent(key:String, value:String, timeout: Duration = DEFAULT_EXPIRATION_PERIOD):Boolean {
+        return valueOp.setIfAbsent(key, value, timeout)
+    }
+
+    fun increment(key:String):Long {
+        return valueOp.increment(key)
+    }
+
+    /**
      * 공통 - delete key
      */
     fun delete(key:String):Boolean = redisTemplate.delete(key)
@@ -87,6 +103,13 @@ class RedisOperator(
      * 공통 - exists key check
      */
     fun hasKey(key:String):Boolean = redisTemplate.hasKey(key)
+
+    /**
+     * 공통 - 해당 key에 대한 타임아웃 설정
+     */
+    fun setExpiration(key:String, timeout: Duration = DEFAULT_EXPIRATION_PERIOD):Boolean {
+        return redisTemplate.expire(key, timeout)
+    }
 
     /**
      * list value type
@@ -100,6 +123,9 @@ class RedisOperator(
 
         return result ?: listOf()
     }
+
+
+
 
     /**
      * list value type

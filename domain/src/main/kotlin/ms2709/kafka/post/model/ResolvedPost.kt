@@ -1,4 +1,4 @@
-package post.model
+package ms2709.kafka.post.model
 import java.time.LocalDateTime
 
 class ResolvedPost{

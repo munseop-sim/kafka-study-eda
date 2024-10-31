@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.0.20"
+    kotlin("plugin.allopen") version "2.0.20"
 }
 
 group = "ms2709.kafka.domain"

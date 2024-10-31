@@ -1,6 +1,6 @@
 package ms2709.kafka.usecase.core.port.post
 
-import post.model.Post
+import ms2709.kafka.post.model.Post
 
 interface PostPort {
     fun save(post: Post): Post

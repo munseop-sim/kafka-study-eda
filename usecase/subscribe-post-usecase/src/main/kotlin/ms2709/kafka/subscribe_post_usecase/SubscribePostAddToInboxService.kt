@@ -4,7 +4,7 @@ package ms2709.kafka.subscribe_post_usecase
 import ms2709.kafka.usecase.core.port.metadata.MetadataPort
 import ms2709.kafka.usecase.core.port.subscribe.SubscribingPostPort
 import org.springframework.stereotype.Component
-import post.model.Post
+import ms2709.kafka.post.model.Post
 
 @Component
 class SubscribePostAddToInboxService (

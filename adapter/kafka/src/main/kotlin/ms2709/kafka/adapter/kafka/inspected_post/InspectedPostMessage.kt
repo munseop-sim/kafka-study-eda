@@ -1,7 +1,7 @@
 package ms2709.kafka.adapter.kafka.inspected_post
 
 import ms2709.kafka.adapter.kafka.common.OperationTypes
-import post.model.Post
+import ms2709.kafka.post.model.Post
 
 import java.time.LocalDateTime
 

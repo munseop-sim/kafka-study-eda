@@ -1,7 +1,7 @@
 package ms2709.kafka.usecase.inspected_post_usecase
 
-import inspectedpost.model.InspectedPost
-import post.model.Post
+import ms2709.kafka.inspectedpost.model.InspectedPost
+import ms2709.kafka.post.model.Post
 
 
 interface PostInspectUseCase {

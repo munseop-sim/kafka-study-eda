@@ -1,6 +1,6 @@
 package ms2709.kafka.subscribe_post_usecase
 
-import post.model.Post
+import ms2709.kafka.post.model.Post
 
 
 interface  SubscribePostAddToInboxUseCase {

@@ -17,6 +17,8 @@ spring:
             hibernate:
                 show_sql: true
                 format_sql: true
+                hbm2ddl:
+                    auto: validate
     data:
         mongodb:
             uri: mongodb://rootuser:1234@localhost:27017/campus?authSource=admin

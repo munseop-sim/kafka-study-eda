@@ -11,38 +11,76 @@ import java.time.LocalDateTime
 @EntityListeners(AuditingEntityListener::class)
 @DynamicUpdate
 @Entity
-open class PostEntity {
+open class PostEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null
-    var title: String? = null
-    var content: String? = null
+    private var id: Int? = null,
+
+    @Column(name="title")
+    private var title: String? = null,
+
+    @Column(name="content")
+    private var content: String? = null,
 
     @Column(name="user_id")
-    var userId: Long? = null
+    private var userId: Int? = null,
 
     @Column(name="category_id")
-    var categoryId: Long? = null
+    private var categoryId: Int? = null,
 
     @Column(name="created_at")
     @CreatedDate
-    var createdAt: LocalDateTime? = null
+    private var createdAt: LocalDateTime? = null,
 
     @Column(name="updated_at")
     @LastModifiedDate
-    var updatedAt: LocalDateTime? = null
+    private var updatedAt: LocalDateTime? = null,
 
     @Column(name="deleted_at")
-    var deletedAt: LocalDateTime? = null
+    private var deletedAt: LocalDateTime? = null
+){
 
 
+    open fun getId(): Int? {
+        return this.id
+    }
+
+    open fun getTitle(): String? {
+        return this.title
+    }
+
+    open fun getContent(): String? {
+        return this.content
+    }
+
+    open fun getUserId(): Int? {
+        return this.userId
+    }
+
+    open fun getCategoryId(): Int? {
+        return this.categoryId
+    }
+
+    open fun getCreatedAt(): LocalDateTime? {
+        return this.createdAt
+    }
+
+    open fun getUpdatedAt(): LocalDateTime? {
+        return this.updatedAt
+    }
+
+    open fun getDeletedAt(): LocalDateTime? {
+        return this.deletedAt
+    }
+    
+    
     companion object {
         fun generate(
-            id:Long?,
+            id:Int?,
             title:String?,
             content:String?,
-            userId: Long?,
-            categoryId:Long?,
+            userId: Int?,
+            categoryId:Int?,
             createdAt: LocalDateTime?,
             updatedAt: LocalDateTime?,
             deletedAt: LocalDateTime?

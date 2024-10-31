@@ -1,6 +1,6 @@
 package ms2709.kafka.subscribe_post_usecase
 
-import post.model.ResolvedPost
+import ms2709.kafka.post.model.ResolvedPost
 
 
 interface SubscribePostListUseCase {

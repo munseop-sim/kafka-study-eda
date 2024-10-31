@@ -5,7 +5,7 @@ import ms2709.kafka.usecase.core.port.post.OriginalPostMessageProducePort
 import ms2709.kafka.usecase.core.port.post.PostPort
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import post.model.Post
+import ms2709.kafka.post.model.Post
 
 @Transactional
 @Service

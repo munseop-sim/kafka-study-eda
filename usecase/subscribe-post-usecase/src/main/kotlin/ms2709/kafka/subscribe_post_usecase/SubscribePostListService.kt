@@ -3,7 +3,7 @@ package ms2709.kafka.subscribe_post_usecase
 import ms2709.kafka.usecase.core.port.subscribe.SubscribingPostPort
 import ms2709.kafka.usecase.post_resolving_help_usecase.PostResolvingHelpUseCase
 import org.springframework.stereotype.Component
-import post.model.ResolvedPost
+import ms2709.kafka.post.model.ResolvedPost
 
 @Component
 class SubscribePostListService (

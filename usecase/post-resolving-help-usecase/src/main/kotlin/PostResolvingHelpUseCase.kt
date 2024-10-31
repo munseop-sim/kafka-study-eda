@@ -1,7 +1,7 @@
 package ms2709.kafka.usecase.post_resolving_help_usecase
 
-import post.model.Post
-import post.model.ResolvedPost
+import ms2709.kafka.post.model.Post
+import ms2709.kafka.post.model.ResolvedPost
 
 interface PostResolvingHelpUseCase {
     fun resolvePostById(postId: Long): ResolvedPost?

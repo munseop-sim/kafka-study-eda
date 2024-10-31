@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.0.20"
+    kotlin("plugin.allopen") version "2.0.20"
 }
 
 group = "ms2709.kafka.domain"
@@ -21,6 +22,7 @@ dependencies {
     implementation(project(":usecase:inspected-post-usecase"))
     implementation(project(":usecase:subscribe-post-usecase"))
     implementation(project(":usecase:post-search-usecase"))
+    implementation(project(":usecase:coupon-usecase"))
 
     implementation(project(":adapter:mysql"))
     implementation(project(":adapter:metadata-client"))

@@ -14,6 +14,8 @@ include 'usecase:post-usecase'
 include 'usecase:inspected-post-usecase'
 include 'usecase:subscribe-post-usecase'
 include 'usecase:post-search-usecase'
+include 'usecase:coupon-usecase'
+
 
 include 'adapter'
 include 'adapter:mysql'
@@ -32,5 +34,6 @@ include 'worker:auto-inspection-worker'
 include 'worker:content-subscribe-worker'
 include 'worker:content-caching-worker'
 include 'worker:content-indexing-worker'
+include 'worker:coupon-worker'
 
 

@@ -1,7 +1,7 @@
 package ms2709.kafka.adapter.kafka.inspected_post
 
 import com.fasterxml.jackson.core.JsonProcessingException
-import inspectedpost.model.InspectedPost
+import ms2709.kafka.inspectedpost.model.InspectedPost
 import ms2709.kafka.adapter.kafka.common.OperationTypes
 import ms2709.kafka.adapter.kafka.common.Topic.INSPECTED_POST
 import ms2709.kafka.common.CustomObjectMapper

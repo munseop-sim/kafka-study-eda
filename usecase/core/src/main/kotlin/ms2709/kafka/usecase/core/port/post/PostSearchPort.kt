@@ -1,6 +1,6 @@
 package ms2709.kafka.usecase.core.port.post
 
-import inspectedpost.model.InspectedPost
+import ms2709.kafka.inspectedpost.model.InspectedPost
 
 interface PostSearchPort {
     fun indexPost(post: InspectedPost)

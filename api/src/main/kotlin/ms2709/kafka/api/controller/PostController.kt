@@ -11,8 +11,8 @@ import ms2709.kafka.usecase.post_usecase.PostReadUseCase
 import ms2709.kafka.usecase.post_usecase.PostUpdateUseCase
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import post.model.Post
-import post.model.ResolvedPost
+import ms2709.kafka.post.model.Post
+import ms2709.kafka.post.model.ResolvedPost
 
 
 @RestController

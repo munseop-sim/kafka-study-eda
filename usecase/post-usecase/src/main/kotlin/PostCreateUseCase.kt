@@ -1,6 +1,6 @@
 package ms2709.kafka.usecase.post_usecase
 
-import post.model.Post
+import ms2709.kafka.post.model.Post
 
 
 interface PostCreateUseCase {

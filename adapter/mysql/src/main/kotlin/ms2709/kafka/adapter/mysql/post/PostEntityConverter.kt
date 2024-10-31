@@ -1,15 +1,15 @@
 package ms2709.kafka.adapter.mysql.post
 
-import post.model.Post
+import ms2709.kafka.post.model.Post
 
 
 fun Post.toEntity():PostEntity{
     return PostEntity.generate(
-        id= this.id,
+        id= this.id?.toInt(),
         title = this.title,
         content = this.content,
-        userId = this.userId,
-        categoryId = this.categoryId,
+        userId = this.userId?.toInt(),
+        categoryId = this.categoryId?.toInt(),
         createdAt = this.createdAt,
         updatedAt = this.updatedAt,
         deletedAt = this.deletedAt
@@ -19,13 +19,13 @@ fun Post.toEntity():PostEntity{
 fun PostEntity.toPost(): Post {
     val entity = this
     return Post.generate(
-        id = entity.id,
-        title = entity.title!!,
-        content = entity.content!!,
-        userId = entity.userId!!,
-        categoryId = entity.categoryId,
-        createdAt = entity.createdAt,
-        updatedAt = entity.updatedAt,
-        deletedAt = entity.deletedAt
+        id = entity.getId()?.toLong(),
+        title = entity.getTitle()!!,
+        content = entity.getContent()!!,
+        userId = entity.getUserId()!!.toLong(),
+        categoryId = entity.getCategoryId()?.toLong(),
+        createdAt = entity.getCreatedAt(),
+        updatedAt = entity.getUpdatedAt(),
+        deletedAt = entity.getDeletedAt()
     )
 }

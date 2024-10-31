@@ -3,7 +3,7 @@ package ms2709.kafka.adapter.mysql.post
 import ms2709.kafka.usecase.core.port.post.PostPort
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
-import post.model.Post
+import ms2709.kafka.post.model.Post
 
 //todo - querydsl 추가
 @Component

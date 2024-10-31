@@ -5,10 +5,12 @@ import ms2709.kafka.usecase.core.port.metadata.MetadataPort
 import ms2709.kafka.usecase.core.port.post.PostPort
 import ms2709.kafka.usecase.core.port.post.ResolvedPostCachePort
 import org.springframework.stereotype.Service
-import post.model.Post
-import post.model.ResolvedPost
+import ms2709.kafka.post.model.Post
+import ms2709.kafka.post.model.ResolvedPost
+import org.springframework.transaction.annotation.Transactional
 
 @Service
+@Transactional(readOnly = true)
 open class PostResolvingHelpService (
     private val postPort: PostPort,
     private val metadataPort: MetadataPort,
@@ -25,7 +27,7 @@ open class PostResolvingHelpService (
         }
     }
 
-    private fun resolvePost(post: Post):ResolvedPost {
+    private fun resolvePost(post: Post): ResolvedPost {
         return ResolvedPost.generate(
             post,
             post.userId?.let{

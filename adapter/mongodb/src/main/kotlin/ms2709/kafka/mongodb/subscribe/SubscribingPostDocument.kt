@@ -3,7 +3,7 @@ package ms2709.kafka.mongodb.subscribe
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
-import post.model.Post
+import ms2709.kafka.post.model.Post
 import java.time.LocalDateTime
 
 @Document(collection = "subscribingInboxPosts")

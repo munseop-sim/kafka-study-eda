@@ -7,7 +7,7 @@ import ms2709.kafka.common.CustomObjectMapper
 import ms2709.kafka.usecase.core.port.post.OriginalPostMessageProducePort
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Component
-import post.model.Post
+import ms2709.kafka.post.model.Post
 
 @Component
 class OriginalPostMessageProduceAdapter(

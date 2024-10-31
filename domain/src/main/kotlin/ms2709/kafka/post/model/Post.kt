@@ -1,4 +1,4 @@
-package post.model
+package ms2709.kafka.post.model
 
 import java.time.LocalDateTime
 
@@ -52,7 +52,7 @@ class Post {
 
 
 
-    fun update(title: String, content: String, categoryId: Long) :Post{
+    fun update(title: String, content: String, categoryId: Long) : Post {
         this.title = title
         this.content = content
         this.categoryId = categoryId
@@ -60,7 +60,7 @@ class Post {
         return this
     }
 
-    fun delete():Post{
+    fun delete(): Post {
         val now = LocalDateTime.now()
         this.updatedAt = now
         this.deletedAt = now
@@ -78,7 +78,7 @@ class Post {
             title: String,
             content: String,
             categoryId: Long
-        ):Post{
+        ): Post {
             val now = LocalDateTime.now()
             return Post(id=null,
                 title=title,
@@ -100,7 +100,7 @@ class Post {
             createdAt: LocalDateTime?,
             updatedAt: LocalDateTime?,
             deletedAt: LocalDateTime?
-        ):Post{
+        ): Post {
             return Post(
                 id = id,
                 title = title,

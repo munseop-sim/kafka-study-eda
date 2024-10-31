@@ -1,6 +1,6 @@
 package ms2709.kafka.post_search_usecase
 
-import inspectedpost.model.InspectedPost
+import ms2709.kafka.inspectedpost.model.InspectedPost
 import ms2709.kafka.usecase.core.port.post.PostSearchPort
 import org.springframework.stereotype.Service
 

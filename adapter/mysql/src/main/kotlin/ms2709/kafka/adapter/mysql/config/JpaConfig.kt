@@ -9,11 +9,12 @@ import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean
 import javax.sql.DataSource
 
-
+//@EnableJpaAuditing
 @EnableJpaRepositories(
     basePackages = ["ms2709.kafka"]
 )
@@ -36,7 +37,7 @@ open class JpaConfig(
     open fun entityManagerFactory(builder: EntityManagerFactoryBuilder): LocalContainerEntityManagerFactoryBean {
         val properties = hibernateProperties.determineHibernateProperties(jpaProperties.properties, HibernateSettings())
         return builder.dataSource(dataSource())
-            .packages("ms2709.kafka.adapter.mysql")
+            .packages("ms2709.kafka")
             .properties(properties)
             .build()
     }

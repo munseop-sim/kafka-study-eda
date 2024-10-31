@@ -1,12 +1,12 @@
 package ms2709.kafka.adapter.chatgpt
 
-import inspectedpost.model.AutoInspectionResult
+import ms2709.kafka.inspectedpost.model.AutoInspectionResult
 import ms2709.kafka.common.CustomObjectMapper
 import ms2709.kafka.common.LogDelegate
 
 import ms2709.kafka.usecase.core.port.chatgpt.PostAutoInspectPort
 import org.springframework.stereotype.Component
-import post.model.Post
+import ms2709.kafka.post.model.Post
 
 @Component
 class PostAutoInspectAdapter(

@@ -1,7 +1,7 @@
 package ms2709.kafka.adapter.kafka.original_post
 
 import ms2709.kafka.adapter.kafka.common.OperationTypes
-import post.model.Post
+import ms2709.kafka.post.model.Post
 
 
 fun OriginalPostMessage.toModel(): Post {

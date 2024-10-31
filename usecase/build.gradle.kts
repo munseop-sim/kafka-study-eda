@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.0.20"
+    kotlin("plugin.allopen") version "2.0.20"
 }
 
 allprojects {
@@ -10,6 +11,7 @@ allprojects {
 
 subprojects{
     apply(plugin = "org.jetbrains.kotlin.jvm") // 서브 프로젝트에 공통으로 코틀린 플러그인 적용
+    apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
 
     dependencies{
         api(kotlin("stdlib")) // 코틀린 표준 라이브러리 사용

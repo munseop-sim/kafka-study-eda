@@ -1,6 +1,6 @@
 package ms2709.kafka.elasticsearch
 
-import inspectedpost.model.InspectedPost
+import ms2709.kafka.inspectedpost.model.InspectedPost
 import ms2709.kafka.usecase.core.port.post.PostSearchPort
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations
