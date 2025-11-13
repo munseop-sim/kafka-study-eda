@@ -107,9 +107,12 @@ jobs:
           TRUNCATED="${{ steps.pr-diff.outputs.diff_truncated }}"
 
           # 리뷰 댓글 작성
-          COMMENT="## 🤖 Claude AI Code Review
+          COMMENT=$(cat <<EOF
+## 🤖 Claude AI Code Review
 
-$REVIEW_CONTENT"
+$REVIEW_CONTENT
+EOF
+)
 
           if [ "$TRUNCATED" == "true" ]; then
             COMMENT="$COMMENT
