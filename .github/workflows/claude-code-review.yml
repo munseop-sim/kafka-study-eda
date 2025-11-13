@@ -57,27 +57,28 @@ jobs:
           PR_TITLE="${{ github.event.pull_request.title }}"
           PR_BODY="${{ github.event.pull_request.body }}"
 
-          # JSON 이스케이프 처리
-          DIFF_ESCAPED=$(echo "$DIFF_CONTENT" | jq -Rs .)
-          FILES_ESCAPED=$(echo "$FILES_CONTENT" | jq -Rs .)
-          PR_TITLE_ESCAPED=$(echo "$PR_TITLE" | jq -Rs .)
-          PR_BODY_ESCAPED=$(echo "$PR_BODY" | jq -Rs .)
-
-          # Claude API 호출
-          REVIEW=$(curl -s https://api.anthropic.com/v1/messages \
+          # Claude API 호출 - jq를 사용하여 올바른 JSON 구성
+          REVIEW=$(jq -n \
+            --arg model "claude-sonnet-4-20250514" \
+            --argjson max_tokens 4096 \
+            --arg diff "$DIFF_CONTENT" \
+            --arg files "$FILES_CONTENT" \
+            --arg title "$PR_TITLE" \
+            --arg body "$PR_BODY" \
+            '{
+              model: $model,
+              max_tokens: $max_tokens,
+              messages: [
+                {
+                  role: "user",
+                  content: "다음 Pull Request를 리뷰해주세요.\n\n## PR 정보\n**제목:** \($title)\n**설명:** \($body)\n\n## 변경된 파일 목록\n\($files)\n\n## Diff\n```\n\($diff)\n```\n\n다음 관점에서 코드 리뷰를 진행해주세요:\n1. **버그 및 잠재적 이슈**: 논리적 오류, null pointer, 예외 처리 누락 등\n2. **코드 품질**: 가독성, 유지보수성, 중복 코드, 복잡도\n3. **보안**: SQL Injection, XSS, 인증/인가 문제, 민감정보 노출\n4. **성능**: 비효율적인 쿼리, 메모리 누수, 불필요한 연산\n5. **베스트 프랙티스**: 디자인 패턴, 코딩 컨벤션, 아키텍처\n6. **테스트**: 테스트 커버리지, 엣지 케이스 처리\n\n리뷰 형식:\n- 발견한 이슈를 중요도 순으로 정리\n- 각 이슈에 대해 파일명:라인 번호 명시\n- 개선 제안과 예제 코드 제공\n- 긍정적인 변경사항도 언급\n\n한글로 친절하게 작성해주세요."
+                }
+              ]
+            }' | curl -s https://api.anthropic.com/v1/messages \
             -H "Content-Type: application/json" \
             -H "x-api-key: $ANTHROPIC_API_KEY" \
             -H "anthropic-version: 2023-06-01" \
-            -d '{
-              "model": "claude-sonnet-4-20250514",
-              "max_tokens": 4096,
-              "messages": [
-                {
-                  "role": "user",
-                  "content": "다음 Pull Request를 리뷰해주세요.\n\n## PR 정보\n**제목:** '"$PR_TITLE_ESCAPED"'\n**설명:** '"$PR_BODY_ESCAPED"'\n\n## 변경된 파일 목록\n'"$FILES_ESCAPED"'\n\n## Diff\n```\n'"$DIFF_ESCAPED"'```\n\n다음 관점에서 코드 리뷰를 진행해주세요:\n1. **버그 및 잠재적 이슈**: 논리적 오류, null pointer, 예외 처리 누락 등\n2. **코드 품질**: 가독성, 유지보수성, 중복 코드, 복잡도\n3. **보안**: SQL Injection, XSS, 인증/인가 문제, 민감정보 노출\n4. **성능**: 비효율적인 쿼리, 메모리 누수, 불필요한 연산\n5. **베스트 프랙티스**: 디자인 패턴, 코딩 컨벤션, 아키텍처\n6. **테스트**: 테스트 커버리지, 엣지 케이스 처리\n\n리뷰 형식:\n- 발견한 이슈를 중요도 순으로 정리\n- 각 이슈에 대해 파일명:라인 번호 명시\n- 개선 제안과 예제 코드 제공\n- 긍정적인 변경사항도 언급\n\n한글로 친절하게 작성해주세요."
-                }
-              ]
-            }')
+            -d @-)
 
           # 응답에서 리뷰 내용 추출
           REVIEW_TEXT=$(echo "$REVIEW" | jq -r '.content[0].text')
