@@ -107,21 +107,13 @@ jobs:
           TRUNCATED="${{ steps.pr-diff.outputs.diff_truncated }}"
 
           # 리뷰 댓글 작성
-          COMMENT="## 🤖 Claude AI Code Review
-
-$REVIEW_CONTENT"
+          COMMENT="## 🤖 Claude AI Code Review"$'\n\n'"$REVIEW_CONTENT"
 
           if [ "$TRUNCATED" == "true" ]; then
-            COMMENT="$COMMENT
-
----
-⚠️ **Note**: Diff was truncated due to size. Review may not cover all changes."
+            COMMENT="$COMMENT"$'\n\n'"---"$'\n'"⚠️ **Note**: Diff was truncated due to size. Review may not cover all changes."
           fi
 
-          COMMENT="$COMMENT
-
----
-*Powered by Claude AI | Generated automatically on PR events*"
+          COMMENT="$COMMENT"$'\n\n'"---"$'\n'"*Powered by Claude AI | Generated automatically on PR events*"
 
           # 기존 Claude 리뷰 댓글 찾기
           EXISTING_COMMENT=$(gh api \
