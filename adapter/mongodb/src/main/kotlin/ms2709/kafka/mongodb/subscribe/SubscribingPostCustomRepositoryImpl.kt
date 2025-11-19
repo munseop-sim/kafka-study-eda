@@ -1,5 +1,6 @@
 package ms2709.kafka.mongodb.subscribe
 
+import ms2709.kafka.common.LogDelegate
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 import org.springframework.data.mongodb.core.MongoTemplate
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository
 open class SubscribingPostCustomRepositoryImpl (
     private val mongoTemplate: MongoTemplate
 ): SubscribingPostCustomRepository {
+    private val log by LogDelegate()
     override fun findByFollowerUserIdWithPagination(
         followerUserId: Long,
         pageIndex: Int,
@@ -25,7 +27,7 @@ open class SubscribingPostCustomRepositoryImpl (
                     Sort.by(Sort.Direction.DESC, "postCreatedAt")
                 )
             )
-        println(query)
+        log.debug("MongoDB query: {}", query)
         return mongoTemplate.find(query, SubscribingPostDocument::class.java, "subscribingInboxPosts")
     }
 

@@ -13,7 +13,7 @@ class SubscribePostListService (
     private  val PAGE_SIZE = 5
 
     override fun listSubscribingInboxPosts(request: SubscribePostListUseCase.Request): List<ResolvedPost> {
-        assert(request.followerUserId != null)
+        require(request.followerUserId != null) { "Follower userId must not be null" }
         return subscribingPostPort.listPostIdsByFollowerUserIdWithPagination(request.followerUserId!!, request.pageIndex, PAGE_SIZE).run {
             postResolvingHelpUseCase.resolvePostsByIds(this)
         }

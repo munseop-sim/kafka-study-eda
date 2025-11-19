@@ -1,4 +1,4 @@
-package ms2709.kafka.adapter.redis.ms2709.kafka.adapter.redis.config
+package ms2709.kafka.adapter.redis.config
 
 import org.redisson.Redisson
 import org.redisson.api.RedissonClient
