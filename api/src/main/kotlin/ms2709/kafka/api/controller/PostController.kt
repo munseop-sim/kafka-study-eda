@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import ms2709.kafka.post.model.Post
 import ms2709.kafka.post.model.ResolvedPost
+import javax.validation.Valid
 
 
 @RestController
@@ -25,7 +26,7 @@ class PostController(
 ) {
     @PostMapping
     fun createPost(
-        @RequestBody request: PostCreateRequest
+        @Valid @RequestBody request: PostCreateRequest
     ): ResponseEntity<PostDto> {
         val post: Post = postCreateUsecase.create(
             PostCreateUseCase.Request(
@@ -68,9 +69,9 @@ class PostController(
 
     @GetMapping("/{postId}/detail")
     fun readPostDetail(
-        @PathVariable("postId") id: Long?
+        @PathVariable("postId") id: Long
     ): ResponseEntity<PostDetailDto> {
-        val resolvedPost = postReadUsecase.getById(id!!) ?: return ResponseEntity.notFound().build()
+        val resolvedPost = postReadUsecase.getById(id) ?: return ResponseEntity.notFound().build()
         return ResponseEntity.ok().body(toDto(resolvedPost))
     }
 

@@ -1,6 +1,6 @@
-package ms2709.kafka.adapter.redis.ms2709.kafka.adapter.redis.coupon
+package ms2709.kafka.adapter.redis.coupon
 
-import ms2709.kafka.adapter.redis.ms2709.kafka.adapter.redis.RedisOperator
+import ms2709.kafka.adapter.redis.RedisOperator
 import ms2709.kafka.common.CustomObjectMapper
 import ms2709.kafka.coupon.model.CouponEvent
 import ms2709.kafka.usecase.core.port.coupon.CouponEventCachePort

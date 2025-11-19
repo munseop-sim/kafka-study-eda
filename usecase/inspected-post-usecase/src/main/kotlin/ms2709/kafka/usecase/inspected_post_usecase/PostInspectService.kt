@@ -14,7 +14,7 @@ open class PostInspectService(
     private val postAutoInspectPort: PostAutoInspectPort
 ) : PostInspectUseCase{
     override fun inspectAndGetIfValid(post: Post): InspectedPost? {
-        assert(post.categoryId != null)
+        require(post.categoryId != null) { "Post categoryId must not be null" }
         var categoryName:String? =null
         return metadataPort.getCategoryNameByCategoryId(post.categoryId!!)?.let {
             categoryName = it

@@ -7,8 +7,8 @@ import ms2709.kafka.post.model.Post
 fun OriginalPostMessage.toModel(): Post {
     return Post.generate(
         this.id!!,
-        this.payLoad?.title ?: throw Exception("title is must not null"),
-        this.payLoad?.content ?: throw Exception("content is must not null"),
+        this.payLoad?.title ?: throw IllegalArgumentException("Post title must not be null"),
+        this.payLoad?.content ?: throw IllegalArgumentException("Post content must not be null"),
         this.payLoad?.userId,
         this.payLoad?.categoryId,
         this.payLoad?.createdAt,
